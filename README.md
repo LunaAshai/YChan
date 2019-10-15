@@ -11,9 +11,4 @@ Supported Websites: 8chan.co / [8ch.net](http://8ch.net/) and [4chan.org](http:/
 YChan requieres .NET Framework 4.5 or higher.
 
 ## This Fork
-* Fixes the HTML page downloader on 4chan.    
-* A lot of improvements to the user interface    
-    * UI resizing tweaks
-    * Press enter to insert urls
-    * Drag and drop support (to the textbox)
-    * Adds a handy clear all button
+* Fixes the file 404 error on the HTML page downloader on 4chan.
