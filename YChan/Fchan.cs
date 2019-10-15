@@ -226,6 +226,7 @@ namespace YChan
                         htmlPage = htmlPage.Replace("//i.4cdn.org/" + getURL().Split('/')[3] + "/" + xmlTim[i].InnerText, xmlTim[i].InnerText);
                     }
 
+                    htmlPage = htmlPage.Replace("//is2.4chan.org/" + getURL().Split('/')[3] + "/" + xmlTim[i].InnerText, xmlTim[i].InnerText);
                     htmlPage = htmlPage.Replace("/" + rep, rep);
                 }
 

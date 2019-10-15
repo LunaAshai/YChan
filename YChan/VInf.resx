@@ -125,6 +125,9 @@
 - add option to filter by regex
 
 &gt; YChan 2.7
+    - Fixed "File (404)" error on downloaded HTML
+
+&gt; YChan 2.7
     - Fix UI bugs
     - Add 4channel.org
     - Add doubleclick to open folder

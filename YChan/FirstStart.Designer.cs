@@ -52,7 +52,9 @@
             this.rtWelcome.Name = "rtWelcome";
             this.rtWelcome.Size = new System.Drawing.Size(335, 150);
             this.rtWelcome.TabIndex = 3;
-            this.rtWelcome.Text = resources.GetString("rtWelcome.Text");
+            this.rtWelcome.Text = "Welcome to YChan! \n\nMain repository is at https://github.com/Ricardo1991/YChan\n\nI" +
+    " fixed a bug. My repo is at https://github.com/LunaAshai/YChan\n\nThat is all, hav" +
+    "e fun.";
             this.rtWelcome.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtWelcome_LinkClicked);
             // 
             // FirstStart
