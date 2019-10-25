@@ -128,6 +128,9 @@ namespace YChan
 
         private void AddUrl(string url)
         {
+            if (string.IsNullOrWhiteSpace(url) && Clipboard.ContainsText())
+                url = Clipboard.GetText();
+
             Imageboard newImageboard = General.CreateNewImageboard(url);
 
             if (newImageboard != null)

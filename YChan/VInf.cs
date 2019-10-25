@@ -31,10 +31,5 @@ namespace YChan
         {
             Close();
         }
-
-        private void RtbChange_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -41,7 +41,6 @@
             this.rtbChange.Size = new System.Drawing.Size(260, 197);
             this.rtbChange.TabIndex = 0;
             this.rtbChange.Text = resources.GetString("rtbChange.Text");
-            this.rtbChange.TextChanged += new System.EventHandler(this.RtbChange_TextChanged);
             // 
             // btnVIClose
             // 
