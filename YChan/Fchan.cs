@@ -37,18 +37,18 @@ namespace YChan
 
         public Fchan(string url, bool isBoard) : base(url, isBoard)
         {
-            this.board = isBoard;
-            this.imName = "4chan";
+            board = isBoard;
+            imName = "4chan";
             if (!isBoard)
             {
                 Match match = Regex.Match(url, @"boards.(4chan|4channel).org/[a-zA-Z0-9]*?/thread/\d*");
-                this.URL = "http://" + match.Groups[0].Value;
-                this.SaveTo = Properties.Settings.Default.path + "\\" + this.imName + "\\" + getURL().Split('/')[3] + "\\" + getURL().Split('/')[5];
+                URL = "http://" + match.Groups[0].Value;
+                SaveTo = Properties.Settings.Default.path + "\\" + imName + "\\" + getURL().Split('/')[3] + "\\" + getURL().Split('/')[5];
             }
             else
             {
-                this.URL = url;
-                this.SaveTo = Properties.Settings.Default.path + "\\" + this.imName + "\\" + getURL().Split('/')[3];
+                URL = url;
+                SaveTo = Properties.Settings.Default.path + "\\" + imName + "\\" + getURL().Split('/')[3];
             }
         }
 
@@ -146,8 +146,8 @@ namespace YChan
         {
             try
             {
-                if (!Directory.Exists(this.SaveTo))
-                    Directory.CreateDirectory(this.SaveTo);
+                if (!Directory.Exists(SaveTo))
+                    Directory.CreateDirectory(SaveTo);
 
                 if (Properties.Settings.Default.loadHTML)
                     downloadHTMLPage();
@@ -155,12 +155,12 @@ namespace YChan
                 string[] URLs = getLinks();
 
                 for (int y = 0; y < URLs.Length; y++)
-                    General.DownloadToDir(URLs[y], this.SaveTo);
+                    General.DownloadToDir(URLs[y], SaveTo);
             }
             catch (WebException webEx)
             {
                 if (webEx.Status == WebExceptionStatus.ProtocolError)
-                    this.Gone = true;
+                    Gone = true;
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -183,7 +183,7 @@ namespace YChan
                 WebClient web = new WebClient();
                 web.Headers["User-Agent"] = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
 
-                htmlPage = web.DownloadString(this.getURL());
+                htmlPage = web.DownloadString(getURL());
 
                 //Prevent the html from being destroyed by the anti adblock script
                 htmlPage = htmlPage.Replace("f=\"to\"", "f=\"penis\"");
@@ -234,10 +234,10 @@ namespace YChan
 
                 //Save thumbs for files that need it
                 for (int i = 0; i < thumbs.Count; i++)
-                    General.DownloadToDir(thumbs[i], this.SaveTo + "\\thumb");
+                    General.DownloadToDir(thumbs[i], SaveTo + "\\thumb");
 
                 if (!string.IsNullOrWhiteSpace(htmlPage))
-                    File.WriteAllText(this.SaveTo + "\\Thread.html", htmlPage);
+                    File.WriteAllText(SaveTo + "\\Thread.html", htmlPage);
             }
             catch
             {

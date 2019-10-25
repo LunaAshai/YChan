@@ -35,18 +35,18 @@ namespace YChan
 
         public Infinitechan(string url, bool isBoard) : base(url, isBoard)
         {
-            this.board = isBoard;
-            this.imName = "8ch";
+            board = isBoard;
+            imName = "8ch";
             if (!isBoard)
             {
                 Match match = Regex.Match(url, @"8ch.net/[a-zA-Z0-9]*?/res/[0-9]*");
-                this.URL = "http://" + match.Groups[0].Value + ".html";      // simplify thread url
-                this.SaveTo = (Properties.Settings.Default.path + "\\" + this.imName + "\\" + getURL().Split('/')[3] + "\\" + getURL().Split('/')[5]).Replace(".html", ""); // set saveto path
+                URL = "http://" + match.Groups[0].Value + ".html";      // simplify thread url
+                SaveTo = (Properties.Settings.Default.path + "\\" + imName + "\\" + getURL().Split('/')[3] + "\\" + getURL().Split('/')[5]).Replace(".html", ""); // set saveto path
             }
             else
             {
-                this.URL = url;
-                this.SaveTo = Properties.Settings.Default.path + "\\" + this.imName + "\\" + getURL().Split('/')[3]; // set saveto path
+                URL = url;
+                SaveTo = Properties.Settings.Default.path + "\\" + imName + "\\" + getURL().Split('/')[3]; // set saveto path
             }
         }
 
@@ -112,7 +112,7 @@ namespace YChan
             catch (WebException webEx)
             {
                 if (((int)webEx.Status) == 7)                                               // 404
-                    this.Gone = true;
+                    Gone = true;
                 throw;
             }
             return links.ToArray();
@@ -158,8 +158,8 @@ namespace YChan
         {
             try
             {
-                if (!Directory.Exists(this.SaveTo))
-                    Directory.CreateDirectory(this.SaveTo);
+                if (!Directory.Exists(SaveTo))
+                    Directory.CreateDirectory(SaveTo);
 
                 if (Properties.Settings.Default.loadHTML)
                     downloadHTMLPage();
@@ -167,12 +167,12 @@ namespace YChan
                 string[] URLs = getLinks();
 
                 for (int y = 0; y < URLs.Length; y++)
-                    General.DownloadToDir(URLs[y], this.SaveTo);
+                    General.DownloadToDir(URLs[y], SaveTo);
             }
             catch (WebException webEx)
             {
                 if (((int)webEx.Status) == 7)
-                    this.Gone = true;
+                    Gone = true;
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -189,9 +189,9 @@ namespace YChan
 
             try
             {
-                htmlPage = new WebClient().DownloadString(this.getURL());
+                htmlPage = new WebClient().DownloadString(getURL());
 
-                string JURL = this.getURL().Replace(".html", ".json");
+                string JURL = getURL().Replace(".html", ".json");
 
                 string Content = new WebClient().DownloadString(JURL);
 
@@ -246,11 +246,11 @@ namespace YChan
 
                 for (int i = 0; i < thumbs.Count; i++)
                 {
-                    General.DownloadToDir(thumbs[i], this.SaveTo + "\\thumb");
+                    General.DownloadToDir(thumbs[i], SaveTo + "\\thumb");
                 }
 
                 if (!String.IsNullOrWhiteSpace(htmlPage))
-                    File.WriteAllText(this.SaveTo + "\\Thread.html", htmlPage); // save thread
+                    File.WriteAllText(SaveTo + "\\Thread.html", htmlPage); // save thread
             }
             catch
             {

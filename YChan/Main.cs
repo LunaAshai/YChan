@@ -52,7 +52,7 @@ namespace YChan
                 nfTray.Visible = false;                                                 // hide it
             scnTimer.Enabled = false;                                                   // disable timer
             scnTimer.Interval = Properties.Settings.Default.timer;                      // set interval
-            scnTimer.Tick += new EventHandler(this.scan);                               // when Timer ticks call scan()
+            scnTimer.Tick += new EventHandler(scan);                               // when Timer ticks call scan()
             ThreadPool.SetMaxThreads(Environment.ProcessorCount, Environment.ProcessorCount);
 
             if (Properties.Settings.Default.firstStart)
@@ -352,18 +352,18 @@ namespace YChan
 
         private void nfTray_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.Visible)
-                this.Hide();
+            if (Visible)
+                Hide();
             else
             {
-                this.Show();
-                this.WindowState = FormWindowState.Normal;
+                Show();
+                WindowState = FormWindowState.Normal;
             }
         }
 
         private void cmTrayExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void cmTrayOpen_Click(object sender, EventArgs e)
@@ -444,16 +444,16 @@ namespace YChan
 
         private void frmMain_SizeChanged(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.minimizeToTray && this.WindowState == FormWindowState.Minimized)
+            if (Properties.Settings.Default.minimizeToTray && WindowState == FormWindowState.Minimized)
             {
                 // when minimized hide from taskbar if trayicon enabled
-                this.Hide();
+                Hide();
             }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void openFolderToolStripMenuItem1_Click(object sender, EventArgs e)

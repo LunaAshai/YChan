@@ -29,7 +29,7 @@ namespace YChan
 
         private void btnVIClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void RtbChange_TextChanged(object sender, EventArgs e)

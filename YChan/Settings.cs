@@ -46,7 +46,7 @@ namespace YChan
                 else
                 {
                     General.SaveSettings(edtPath.Text, int.Parse(edtTimer.Text) * 1000, chkHTML.Checked, chkSave.Checked, chkTray.Checked, chkWarn.Checked); // save settings
-                    this.Close();
+                    Close();
                 }
             }
             else
@@ -57,7 +57,7 @@ namespace YChan
 
         private void btnSCan_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void edtPath_Click(object sender, EventArgs e)

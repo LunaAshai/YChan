@@ -38,28 +38,28 @@ namespace YChan
         // Constructor, setting URL and Type (Board/Thread)
         public Imageboard(string url, bool isBoard)
         {
-            this.URL = url;
-            this.board = isBoard;
+            URL = url;
+            board = isBoard;
         }
 
         public bool isGone()
         {
-            return this.Gone;
+            return Gone;
         }
 
         public string getURL()
         {
-            return this.URL;
+            return URL;
         }
 
         public string getImName()
         {
-            return this.imName;
+            return imName;
         }
 
         public string getPath()
         {
-            return this.SaveTo;
+            return SaveTo;
         }
 
         static public bool urlIsThread(string url)
@@ -87,7 +87,7 @@ namespace YChan
 
         public override string ToString()
         {
-            return this.URL;
+            return URL;
         }
     }
 }
